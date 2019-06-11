@@ -512,12 +512,14 @@
         var data = Male.value;
         SceneWindow.localPlayerHandler(data);
         updateActionElementActive();
+        $(Male.element).one("click", setGenderToMale);
     }
 
     function setGenderToFemale(){
         var data = Female.value
         SceneWindow.localPlayerHandler(data);
         updateActionElementActive();
+        $(Female.element).one("click", setGenderToFemale);
     }
 
 
