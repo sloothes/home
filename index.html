@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <meta name="description" contents="Real-time Multiplayer 3D Social Web Spaces Network">
 
-    <title>home (v3.0)</title>
+    <title>(home v3.0)</title>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootbox-dialoges.css">
@@ -84,10 +84,6 @@
 
                     <li class role="presentation"><a href="#control-tab" data-toggle="pill" class="pills right-pill right-pill-control">Control</a></li>
                     <li class role="presentation"><a href="#outfits-tab" data-toggle="pill" class="pills right-pill right-pill-outfits">Outfit</a></li>
-                    <li class role="presentation"><a href="#new-product-tab" data-toggle="pill" class="pills right-pill right-pill-new">New</a></li>
-                    <li class role="presentation"><a href="#edit-product-tab" data-toggle="pill" class="pills right-pill right-pill-edit">Edit</a></li>
-                    <li class role="presentation"><a href="#buy-product-tab" data-toggle="pill" class="pills right-pill right-pill-buy">Buy</a></li>
-                    <li class role="presentation"><a href="#helpers-tab" data-toggle="pill" class="pills right-pill right-pill-helpers">Helpers</a></li>
                     <li class role="presentation"><a href="#login-tab" data-toggle="pill" class="pills right-pill right-pill-login">Login</a></li>
 
                 </ul>
@@ -448,10 +444,6 @@
 
 //  Access to scene window.
 
-    //  SceneSocketId;       // (global, dynamic);
-    //  SceneChannel;        // (global, dynamic);
-    //  localPlayerChannel;  // (global, dynamic);
-
 //  var viewer = document.getElementById( "viewer" );
     var SceneWindow = viewer.contentWindow; // important!
     var SceneDocument = viewer.contentDocument; // important!
@@ -517,35 +509,22 @@
     $(Female.element).one("click", setGenderToFemale);
 
     function setGenderToMale(){
-        var data = Male.value
-        var channelName = localPlayerChannel;
-        socket.publish(channelName, data, function(err){
-            if (err) console.error(err);
-            updateActionElementActive();
-            $(Male.element).one("click", setGenderToMale);
-        });
+        var data = Male.value;
+        SceneWindow.localPlayerHandler(data);
+        updateActionElementActive();
     }
 
     function setGenderToFemale(){
         var data = Female.value
-        var channelName = localPlayerChannel;
-        socket.publish(channelName, data, function(err){
-            if (err) console.error(err);
-            updateActionElementActive();
-            $(Female.element).one("click", setGenderToFemale);
-        });
+        SceneWindow.localPlayerHandler(data);
+        updateActionElementActive();
     }
-
-
 
 
     $(Idle.element).on("click", function (){
         var data = "/action/idle";
-        var channelName = localPlayerChannel;
-        socket.publish(channelName, data, function(err){
-            if (err) console.error(err);
-            updateActionElementActive();
-        });
+        SceneWindow.localPlayerHandler(data);
+        updateActionElementActive();
     });
 
     $(Walk.element).on("click", function (){
@@ -556,11 +535,8 @@
         else 
             var data = "/action/idle";
 
-        var channelName = localPlayerChannel;
-        socket.publish(channelName, data, function(err){
-            if (err) console.error(err);
-            updateActionElementActive();
-        });
+        SceneWindow.localPlayerHandler(data);
+        updateActionElementActive();
     });
 
     $(Run.element).on("click", function (){
@@ -571,22 +547,16 @@
         else 
             var data = "/action/idle";
 
-        var channelName = localPlayerChannel;
-        socket.publish(channelName, data, function(err){
-            if (err) console.error(err);
-            updateActionElementActive();
-        });
+        SceneWindow.localPlayerHandler(data);
+        updateActionElementActive();
     });
 
     $(Jump.element).one("click", jumpAction);
                         
     function jumpAction(){
         var data = "/action/jump";
-        var channelName = localPlayerChannel;
-        socket.publish(channelName, data, function(err){
-            if (err) console.error(err);
-            $(Jump.element).one("click", jumpAction);
-        });
+        SceneWindow.localPlayerHandler(data);
+        $(Jump.element).one("click", jumpAction);
     }
 
 })();
@@ -604,57 +574,25 @@
 
     $(Back.element).on("click", function (){
         var data = "/turn/back";
-        var channel = localPlayerChannel;
-        socket.publish(channel, data);
+        SceneWindow.localPlayerHandler(data);
     });
 
     $(Left.element).on("click", function (){
         var data = "/turn/left";
-        var channel = localPlayerChannel;
-        socket.publish(channel, data);
+        SceneWindow.localPlayerHandler(data);
     });
 
     $(Right.element).on("click", function (){
         var data = "/turn/right";
-        var channel = localPlayerChannel;
-        socket.publish(channel, data);
+        SceneWindow.localPlayerHandler(data);
     });
 
     $(Front.element).on("click", function (){
         var data = "/turn/front";
-        var channel = localPlayerChannel;
-        socket.publish(channel, data);
+        SceneWindow.localPlayerHandler(data);
     });
 
 })();
-
-</script>
-
-<script>
-
-//  socketcluster.js
-
-    socket = socketCluster.create({
-        port:8000,
-        hostname: "46.101.129.67",
-        codecEngine: scCodecMinBin
-    });
-    
-    socket.on("connect", function(status){
-        debugMode && console.log({"status": status});
-    });
-
-    socket.on("error", function (err) {
-        console.error(  err.stack );
-    });
-
-    socket.on("authStateChange", function( state ){
-        debugMode && console.log( {"authStateChange": state} );
-    });
-
-    socket.on("subscribe", function(name, object){
-        debugMode && console.log(`subscribed to "${name}" channel:`, object);
-    });
 
 </script>
 
@@ -662,9 +600,6 @@
 <script>
 
     $("#control-tab").load("/control-tab/");
-
-
-
 
 </script>
 
