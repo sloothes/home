@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="description" contents="Real-time Multiplayer 3D Social Web Spaces Network">
+
+    <title>home index v3.0</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootbox-dialoges.css">
+    <link rel="stylesheet" href="/css/side-panels.css">
+    <link rel="stylesheet" href="/css/messg.css" >
+    <link rel="stylesheet" href="/css/spectrum.css">
+    <link rel="stylesheet" href="/css/colorpicker.css">
+    <link rel="stylesheet" href="/css/spinner.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <link rel="stylesheet" href="/css/alerts.css">
+    <link rel="stylesheet" href="/css/panel-ui.css">
+    <link rel="stylesheet" href="/css/anywhere3d.css">
+    <link rel="stylesheet" href="/css/jquery.Jcrop.css">
+    <link rel="stylesheet" href="/css/menu-menubar.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/style.css">
+
+    <script src="/socketcluster.js"></script>
+    <script src="/sc-codec-min-bin.js"></script>
+
+</head>
+
+<body>
+
+<style>
+
+    #content div ul li {
+        cursor: pointer;
+        margin-left:15px;
+    }
+
+    #right-side-content {
+        position:absolute; left:25px; top:60px; right:10px; bottom:40px; 
+        padding: 0px 20px 0px 20px; overflow:auto; 
+    }
+
+    a.none-deco:focus,
+    a.none-deco:hover, 
+    a.none-deco:active, 
+    a.none-deco:visited {
+        color:#55a5ec;
+        text-decoration:none;
+    }
+
+</style>
+
+<div id="panel" class="collapsed">
+    <h1><a href="/home" class="none-deco">Sloothes</a></h1>
+    <a id="expandButton" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+    <div class="filterBlock" >
+        <input type="text" id="filterInput" placeholder="Type to filter"/>
+        <a href="#" id="clearFilterButton" >x</a>
+    </div>
+    <div id="content"></div>
+</div>
+
+<section class="mbr-section" id="body-section">
+
+    <iframe id="viewer" src="/scene"></iframe>
+
+    <div class="side-panel" id="right-side" style="top:0;">
+        <div id="right-side-pinbtn" title="click this to pin/unpin panel"></div>
+
+        <div id="right-side-content" style="overflow-x:hidden;">
+
+            <div class="side-holder" style="margin-bottom:20px;">
+                <ul class="nav nav-tabs nav-pills" style="overflow-x:scroll;overflow-y:hidden;width:300px;">
+
+                    <li class role="presentation"><a href="#control-tab" data-toggle="pill" class="pills right-pill right-pill-control">Control</a></li>
+                    <li class role="presentation"><a href="#outfits-tab" data-toggle="pill" class="pills right-pill right-pill-outfits">Outfit</a></li>
+                    <li class role="presentation"><a href="#new-product-tab" data-toggle="pill" class="pills right-pill right-pill-new">New</a></li>
+                    <li class role="presentation"><a href="#edit-product-tab" data-toggle="pill" class="pills right-pill right-pill-edit">Edit</a></li>
+                    <li class role="presentation"><a href="#buy-product-tab" data-toggle="pill" class="pills right-pill right-pill-buy">Buy</a></li>
+                    <li class role="presentation"><a href="#helpers-tab" data-toggle="pill" class="pills right-pill right-pill-helpers">Helpers</a></li>
+                    <li class role="presentation"><a href="#login-tab" data-toggle="pill" class="pills right-pill right-pill-login">Login</a></li>
+
+                </ul>
+            </div>
+
+            <div id="right-side-panel" class="tab-content">
+
+                <div id="control-tab" class="component-pane tab-pane fade in active"></div>
+                <div id="outfits-tab" class="component-pane tab-pane fade"></div>
+                <div id="new-product-tab" class="component-pane tab-pane fade"></div>
+                <div id="edit-product-tab" class="component-pane tab-pane fade"></div>
+                <div id="buy-product-tab" class="component-pane tab-pane fade"></div>
+                <div id="helpers-tab" class="component-pane tab-pane fade"></div>
+                <div id="login-tab" class="component-pane tab-pane fade"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="middle" id="dialog-panel">
+        <div id="dialog-container" style="max-width:350px;max-height:600px;"></div>
+    </div>
+
+</section>
+
+<script>
+
+    debugMode = true;
+
+//  menu-list.js
+
+    var list = {
+
+        "Menu": {
+
+            "Sex": [
+                ["Male", "/gender/male"],
+                ["Female", "/gender/female"],
+            ],
+
+            "Move": [
+                ["Idle", "/action/idle"],
+                ["Walk", "/action/walk"],
+                ["Run",  "/action/run"],
+                ["Jump", "/action/jump"],
+            ],
+
+            "Turn": [
+                ["Back",  "/turn/back"],
+                ["Left",  "/turn/left"],
+                ["Right", "/turn/right"],
+                ["Front", "/turn/front"],
+            ],
+
+            "Slot": [
+                ["Body", "/outfit/body"],
+                ["Hairs", "/outfit/hairs"],
+                ["Stockings", "/outfit/hairs"],
+                ["Underwears", "/outfit/underwears"],
+                ["Dress", "/outfit/dress"],
+                ["Costume", "/outfit/costume"],
+                ["Tshirt", "/outfit/tshirt"],
+                ["Trousers", "/outfit/trousers"],
+                ["Shoes", "/outfit/shoes"],
+            ],
+
+            "User": [
+                ["Login", "/user/login"],
+                ["Signup", "/user/signup"],
+                ["Logout", "/user/logout"],
+            ],
+
+        },
+
+    };
+
+    var pages = {};
+
+    for ( var section in list ) {
+
+        pages[ section ] = {};
+
+        for ( var category in list[ section ] ) {
+
+            pages[ section ][ category ] = {};
+
+            for ( var i = 0; i < list[ section ][ category ].length; i ++ ) {
+
+                var page = list[ section ][ category ][ i ];
+                pages[ section ][ category ][ page[ 0 ] ] = page[ 1 ];
+
+            }
+
+        }
+
+    }
+
+</script>
+
+<script>
+
+//  menu-panel.js
+
+    var panel = document.getElementById( "panel" );
+    var viewer = document.getElementById( "viewer" );
+
+    var expandButton = document.getElementById( "expandButton" );
+    expandButton.addEventListener( "click", function ( event ) {
+        panel.classList.toggle( "collapsed" );
+        event.preventDefault();
+    });
+
+    var filterInput = document.getElementById( "filterInput" );
+    var clearFilterButton = document.getElementById( "clearFilterButton" );
+
+    var DELIMITER = "/";
+    var MEMBER_DELIMITER = ".";
+    var nameCategoryMap = {};
+    var sections = [];
+
+    var content = document.getElementById( "content" );
+
+    function layoutList() {
+
+        sections.forEach( function( el ) {
+
+            var collapsed = true;
+            Array.prototype.slice.apply( el.children ).forEach( function( item ) {
+                if ( !item.classList.contains( "filtered" ) ) {
+                    collapsed = false;
+                    return;
+                }
+            });
+
+            if ( collapsed ) {
+                el.parentElement.classList.add( "filtered" );
+            } else {
+                el.parentElement.classList.remove( "filtered" );
+            }
+
+        } );
+    }
+
+    filterInput.addEventListener( "input", function( e ) {
+        updateFilter();
+    });
+
+    clearFilterButton.addEventListener( "click", function( e ) {
+        filterInput.value = "";
+        updateFilter();
+        e.preventDefault();
+    });
+
+    function updateFilter() {
+
+        var exp = new RegExp( filterInput.value, "gi" );
+        for( var j in nameCategoryMap ) {
+            var res = nameCategoryMap[ j ].name.match( exp );
+            if( res && res.length > 0 ) {
+                nameCategoryMap[ j ].element.parentElement.classList.remove( "filtered" );
+                var str = nameCategoryMap[ j ].name;
+                for( var i = 0; i < res.length; i++ ) {
+                    str = str.replace( res[ i ], "<b>" + res[ i ] + "</b>" );
+                }
+                nameCategoryMap[ j ].element.innerHTML = str;
+            } else {
+                nameCategoryMap[ j ].element.parentElement.classList.add( "filtered" );
+                nameCategoryMap[ j ].element.textContent = nameCategoryMap[ j ].name;
+            }
+        }
+
+        layoutList();
+
+    }
+
+    function encodeUrl( path ) {
+
+        return path.replace(/\ \/\ /g, ".").replace(/\ /g, "_");
+
+    }
+
+    function decodeUrl( path ) {
+
+        return path.replace(/_/g, " ").replace(/\./g, " / ");
+
+    }
+
+    function goTo( section, category, name, member ) {
+
+        var parts, location;
+
+        //  Fully resolve links that only provide a name.
+        if (arguments.length == 1) {
+
+            //  Resolve links of the form "Class.member".
+            if (section.indexOf(MEMBER_DELIMITER) !== -1) {
+                parts = section.split(MEMBER_DELIMITER)
+                section = parts[0];
+                member = parts[1];
+            }
+
+            location = nameCategoryMap[section];
+            if (!location) return;
+            section = location.section;
+            category = location.category;
+            name = location.name;
+        }
+
+        var title = `outfit editor - ${name}` //  + section + " - " + name;  //
+        var url = encodeUrl(section) + DELIMITER + encodeUrl( category ) + DELIMITER + encodeUrl(name) + (!!member ? MEMBER_DELIMITER + encodeUrl(member) : "");
+
+        debugMode && console.log(url);
+
+        window.location.hash = url;
+        window.document.title = title;
+
+        panel.classList.add( "collapsed" );
+
+    }
+
+    function goToHash() {
+
+        var hash = window.location.hash.substring( 1 ).split(DELIMITER);
+        var member = hash[2].split(MEMBER_DELIMITER)
+        goTo( decodeUrl(hash[0]), decodeUrl(hash[1]), decodeUrl(member[0]), decodeUrl(member.length > 1 ? member[1] : '') );
+
+    }
+
+    function storeTo( section, category, name, value, member ) {
+
+        var parts, location;
+
+        //  Fully resolve links that only provide a name.
+        if (arguments.length == 1) {
+
+            //  Resolve links of the form "Class.member".
+            if (section.indexOf(MEMBER_DELIMITER) !== -1) {
+                parts = section.split(MEMBER_DELIMITER)
+                section = parts[0];
+                member = parts[1];
+            }
+
+            location = nameCategoryMap[section];
+            if (!location) return;
+            section = location.section;
+            category = location.category;
+            name = location.name;
+            value = location.value;
+        }
+
+        var url = encodeUrl(section) + DELIMITER + encodeUrl( category ) + DELIMITER + encodeUrl(name) + (!!member ? MEMBER_DELIMITER + encodeUrl(member) : "");
+
+        store( category, value );
+
+        debugMode && console.log( category, store(category) );
+
+        panel.classList.add( "collapsed" );
+
+    }
+
+    (function(){
+
+        for ( var section in list ) {
+
+            var h2 = document.createElement( "h2" );
+            h2.textContent = section;
+
+            content.appendChild( h2 );
+
+            for ( var category in list[ section ] ) {
+
+                var div = document.createElement( "div" );
+
+                var h3 = document.createElement( "h3" );
+                h3.textContent = category;
+
+                div.appendChild( h3 );
+
+                var ul = document.createElement( "ul" );
+                ul.id = category.toLocaleLowerCase();
+                div.appendChild( ul );
+
+                for ( var i = 0; i < list[ section ][ category ].length; i ++ ) {
+
+                    var page = list[ section ][ category ][ i ];
+
+                    var li = document.createElement( "li" );
+                    li.id = "menu-item-" + page[0].toLocaleLowerCase();
+
+                    var a = document.createElement( "a" );
+                //  a.setAttribute( "href", "#" );
+
+                    ( function( s, c, p, v ) {
+                        a.addEventListener( "click", function( e ) {
+                            storeTo( s, c, p, v );
+                            e.preventDefault();
+                        });
+                    })( section, category, page[ 0 ], page[ 1 ] )
+                    a.textContent = page[ 0 ];
+                    li.appendChild( a );
+                    ul.appendChild( li );
+
+                    nameCategoryMap[page[0]] = {
+                        section: section,
+                        category: category,
+                        name: page[0],
+                        value: page[1],
+                        element: a,
+                    };
+
+                }
+
+                content.appendChild( div );
+                sections.push( ul );
+
+            }
+
+        }
+
+        panel.appendChild( content )
+
+    //  window.addEventListener( "hashchange", goToHash, false );
+    //  if ( window.location.hash.length > 0 ) goToHash();
+
+        debugMode && console.log( {"pages": pages} );
+        debugMode && console.log( {"nameCategoryMap": nameCategoryMap} );
+
+    })();
+
+</script>
+
+<script src="/scene/js/w3.js"></script>
+<script src="/scene/js/rawinflate.js"></script>
+<script src="/scene/js/rawdeflate.js"></script>
+<script src="/scene/js/store2.js"></script>
+<script src="/scene/js/Objectid.js"></script>
+<script src="/scene/js/zangodb.min.js"></script>
+<script src="/scene/js/jquery.min.js"></script>
+<script src="/scene/js/jquery-ui.js"></script>
+<script src="/scene/js/jquery.Jcrop.js"></script>
+<script src="/scene/js/bootbox.min.js"></script>
+<script src="/scene/js/bootstrap.min.js"></script>
+<script src="/scene/js/DeviceDetector.js"></script>
+<script src="/scene/js/MathDecimalAdjustment.js"></script>
+<script src="/scene/js/watermark.js"></script>
+<script src="/scene/js/system.min.js"></script>
+<script src="/scene/js/signals.min.js"></script>
+<script src="/scene/js/command.js"></script>
+<script src="/scene/js/spectrum.js"></script>
+<script src="/scene/js/validator.min.js"></script>
+<script src="/scene/js/AW3D.db.js"></script>
+<script src="/scene/js/alerts.js"></script>
+<script src="/scene/js/side-panels.js"></script>
+
+<script>
+
+//  Access to scene window.
+
+    //  SceneSocketId;       // (global, dynamic);
+    //  SceneChannelName;    // (global, dynamic);
+    //  localPlayerChannel;  // (global, dynamic);
+
+//  var viewer = document.getElementById( "viewer" );
+    var SceneWindow = viewer.contentWindow; // important!
+    var SceneDocument = viewer.contentDocument; // important!
+
+    $(viewer.contentWindow).on("load", function(){
+
+        MW = this.MW;
+        THREE = this.THREE;
+        scene = this.scene;
+        camera = this.camera;
+        renderer = this.renderer;
+        localPlayer = this.localPlayer;
+        cameraControls = this.cameraControls;
+        keyInputControls = this.keyInputControls;
+
+        debugMode && console.log({
+            "SceneWindow loads":{
+                "MW": MW,
+                "THREE": THREE,
+                "scene": scene,
+                "camera": camera,
+                "renderer": renderer,
+                "localPlayer": localPlayer,
+                "cameraControls": cameraControls,
+                "keyInputControls": keyInputControls,
+            }
+        });
+
+    });
+
+</script>
+
+<script>
+
+(function(){
+
+    var Male = nameCategoryMap["Male"];
+    var Female = nameCategoryMap["Female"];
+
+    const Run  = nameCategoryMap["Run"];
+    const Idle = nameCategoryMap["Idle"];
+    const Walk = nameCategoryMap["Walk"];
+    const Jump = nameCategoryMap["Jump"];
+
+    function updateActionElementActive(){
+
+        Run.element.active = localPlayer.controller.isRunning && !localPlayer.controller.isWalking;
+        Walk.element.active = localPlayer.controller.isRunning && localPlayer.controller.isWalking;
+
+        try {
+
+        //  Update control tab action buttons.
+            document.getElementById("run").active = localPlayer.controller.isRunning && !localPlayer.controller.isWalking;
+            document.getElementById("walk").active = localPlayer.controller.isRunning && localPlayer.controller.isWalking;
+
+        }
+
+        catch(err){;}
+    }
+
+
+    $(Male.element).one("click", setGenderToMale);
+    $(Female.element).one("click", setGenderToFemale);
+
+    function setGenderToMale(){
+        var data = Male.value
+        var channelName = localPlayerChannel;
+        socket.publish(channelName, data, function(err){
+            if (err) console.error(err);
+            updateActionElementActive();
+            $(Male.element).one("click", setGenderToMale);
+        });
+    }
+
+    function setGenderToFemale(){
+        var data = Female.value
+        var channelName = localPlayerChannel;
+        socket.publish(channelName, data, function(err){
+            if (err) console.error(err);
+            updateActionElementActive();
+            $(Female.element).one("click", setGenderToFemale);
+        });
+    }
+
+
+
+
+    $(Idle.element).on("click", function (){
+        var data = "/action/idle";
+        var channelName = localPlayerChannel;
+        socket.publish(channelName, data, function(err){
+            if (err) console.error(err);
+            updateActionElementActive();
+        });
+    });
+
+    $(Walk.element).on("click", function (){
+        this.active = !this.active;
+
+        if (this.active) 
+            var data = "/action/walk";
+        else 
+            var data = "/action/idle";
+
+        var channelName = localPlayerChannel;
+        socket.publish(channelName, data, function(err){
+            if (err) console.error(err);
+            updateActionElementActive();
+        });
+    });
+
+    $(Run.element).on("click", function (){
+        this.active = !this.active;
+
+        if (this.active) 
+            var data = "/action/run";
+        else 
+            var data = "/action/idle";
+
+        var channelName = localPlayerChannel;
+        socket.publish(channelName, data, function(err){
+            if (err) console.error(err);
+            updateActionElementActive();
+        });
+    });
+
+    $(Jump.element).one("click", jumpAction);
+                        
+    function jumpAction(){
+        var data = "/action/jump";
+        var channelName = localPlayerChannel;
+        socket.publish(channelName, data, function(err){
+            if (err) console.error(err);
+            $(Jump.element).one("click", jumpAction);
+        });
+    }
+
+})();
+
+</script>
+
+<script>
+
+(function(){
+
+    const Back  = nameCategoryMap["Back"];
+    const Left  = nameCategoryMap["Left"];
+    const Right = nameCategoryMap["Right"];
+    const Front = nameCategoryMap["Front"];
+
+    $(Back.element).on("click", function (){
+        var data = "/turn/back";
+        var channel = localPlayerChannel;
+        socket.publish(channel, data);
+    });
+
+    $(Left.element).on("click", function (){
+        var data = "/turn/left";
+        var channel = localPlayerChannel;
+        socket.publish(channel, data);
+    });
+
+    $(Right.element).on("click", function (){
+        var data = "/turn/right";
+        var channel = localPlayerChannel;
+        socket.publish(channel, data);
+    });
+
+    $(Front.element).on("click", function (){
+        var data = "/turn/front";
+        var channel = localPlayerChannel;
+        socket.publish(channel, data);
+    });
+
+})();
+
+</script>
+
+<script>
+
+//  socketcluster.js
+
+    socket = socketCluster.create({
+        port:8000,
+        hostname: "46.101.129.67",
+        codecEngine: scCodecMinBin
+    });
+    
+    socket.on("connect", function(status){
+        debugMode && console.log({"status": status});
+    });
+
+    socket.on("error", function (err) {
+        console.error(  err.stack );
+    });
+
+    socket.on("authStateChange", function( state ){
+        debugMode && console.log( {"authStateChange": state} );
+    });
+
+    socket.on("subscribe", function(name, object){
+        debugMode && console.log(`subscribed to "${name}" channel:`, object);
+    });
+
+</script>
+
+
+<script>
+
+    $("#control-tab").load("/components/control-tab/");
+
+
+
+
+</script>
+
+
+</body>
+</html>
+
