@@ -31,7 +31,7 @@
     <script src="/sc-codec-min-bin.js"></script>
 
     <script>
-        debugMode = true;
+        var debugMode = true;
     </script>
 
 </head>
@@ -136,7 +136,6 @@
 <script src="/js/command.js"></script>
 <script src="/js/spectrum.js"></script>
 <script src="/js/validator.min.js"></script>
-<!-- script src="/js/AW3D.db.js"></script -->
 <script src="/js/alerts.js"></script>
 <script src="/js/side-panels.js"></script>
 
@@ -149,7 +148,7 @@
     var SceneDocument = viewer.contentDocument; // important!
 
     $(viewer.contentWindow).on("load", function(){
-
+        db = this.db;
         MW = this.MW;
         THREE = this.THREE;
         scene = this.scene;
@@ -179,6 +178,10 @@
         Run.element.active = localPlayer.controller.isRunning && !localPlayer.controller.isWalking;
         Walk.element.active = localPlayer.controller.isRunning && localPlayer.controller.isWalking;
 
+    }
+
+    function updateActionButtonsActive(){
+
         try {
 
         //  Update control tab action buttons.
@@ -198,6 +201,7 @@
         var data = Male.value;
         SceneWindow.localPlayerHandler(data);
         updateActionElementActive();
+        updateActionButtonsActive();
         $(Male.element).one("click", setGenderToMale);
     }
 
@@ -205,6 +209,7 @@
         var data = Female.value
         SceneWindow.localPlayerHandler(data);
         updateActionElementActive();
+        updateActionButtonsActive();
         $(Female.element).one("click", setGenderToFemale);
     }
 
@@ -213,6 +218,7 @@
         var data = "/action/idle";
         SceneWindow.localPlayerHandler(data);
         updateActionElementActive();
+        updateActionButtonsActive();
     });
 
     $(Walk.element).on("click", function (){
@@ -225,6 +231,7 @@
 
         SceneWindow.localPlayerHandler(data);
         updateActionElementActive();
+        updateActionButtonsActive();
     });
 
     $(Run.element).on("click", function (){
@@ -237,6 +244,7 @@
 
         SceneWindow.localPlayerHandler(data);
         updateActionElementActive();
+        updateActionButtonsActive();
     });
 
     $(Jump.element).one("click", jumpAction);
