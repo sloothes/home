@@ -6,19 +6,20 @@
                 ["Male", "/gender/male"],
                 ["Female", "/gender/female"],
             ],
-            "Move": [
+            "Actions": [
                 ["Idle", "/action/idle"],
                 ["Walk", "/action/walk"],
                 ["Run",  "/action/run"],
                 ["Jump", "/action/jump"],
             ],
-            "Turn": [
-                ["Back",  "/turn/back"],
+            "Controls": [
                 ["Left",  "/turn/left"],
+                ["Back",  "/turn/back"],
                 ["Right", "/turn/right"],
                 ["Front", "/turn/front"],
             ],
-            "Slot": [
+        /*
+            "Outfit": [
                 ["Body", "/outfit/body"],
                 ["Hairs", "/outfit/hairs"],
                 ["Stockings", "/outfit/hairs"],
@@ -29,7 +30,8 @@
                 ["Trousers", "/outfit/trousers"],
                 ["Shoes", "/outfit/shoes"],
             ],
-            "User": [
+        */
+            "Users": [
                 ["Login", "/user/login"],
                 ["Signup", "/user/signup"],
                 ["Logout", "/user/logout"],
