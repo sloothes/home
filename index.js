@@ -1,8 +1,8 @@
 //  Port to scene window.
 
 var viewer = document.getElementById( "viewer" );
-var SceneWindow = viewer.contentWindow; // important!
-var SceneDocument = viewer.contentDocument; // important!
+var SceneWindow = viewer.contentWindow;
+var SceneDocument = viewer.contentDocument;
 
 $(viewer.contentWindow).on("load", function(){
     db = this.db;
