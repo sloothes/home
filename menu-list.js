@@ -24,7 +24,6 @@
             ],
 
             "Outfit": [
-                ["Body", "/outfit/body"],
                 ["Hairs", "/outfit/hairs"],
                 ["Stockings", "/outfit/hairs"],
                 ["Underwears", "/outfit/underwears"],
