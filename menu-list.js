@@ -1,12 +1,28 @@
 //  menu-list.js
 
     var list = {
+
         "Menu": {
+
             "Sex": [
                 ["Male", "/gender/male"],
                 ["Female", "/gender/female"],
             ],
-        /*
+
+            "Actions": [
+                ["Idle", "/action/idle"],
+                ["Walk", "/action/walk"],
+                ["Run",  "/action/run"],
+                ["Jump", "/action/jump"],
+            ],
+
+            "Controls": [
+                ["Left",  "/turn/left"],
+                ["Back",  "/turn/back"],
+                ["Right", "/turn/right"],
+                ["Front", "/turn/front"],
+            ],
+
             "Outfit": [
                 ["Body", "/outfit/body"],
                 ["Hairs", "/outfit/hairs"],
@@ -18,26 +34,18 @@
                 ["Trousers", "/outfit/trousers"],
                 ["Shoes", "/outfit/shoes"],
             ],
-        */
-            "Actions": [
-                ["Idle", "/action/idle"],
-                ["Walk", "/action/walk"],
-                ["Run",  "/action/run"],
-                ["Jump", "/action/jump"],
-            ],
-            "Controls": [
-                ["Left",  "/turn/left"],
-                ["Back",  "/turn/back"],
-                ["Right", "/turn/right"],
-                ["Front", "/turn/front"],
-            ],
+
+        /*
             "Users": [
                 ["Login", "/user/login"],
                 ["Signup", "/user/signup"],
                 ["Logout", "/user/logout"],
             ],
+        */
+
         },
     };
+
     var pages = {};
     for ( var section in list ) {
         pages[ section ] = {};
