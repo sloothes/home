@@ -14,6 +14,11 @@ $(viewer.contentWindow).on("load", function(){
     localPlayer = this.localPlayer;
     cameraControls = this.cameraControls;
     keyInputControls = this.keyInputControls;
+
+    this.localPlayerHandler(
+        "/turn/back",
+        "/gender/female"
+    );
 });
 
 (function(){
