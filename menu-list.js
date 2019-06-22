@@ -29,7 +29,7 @@
                 ["Underwears", "/outfit/underwears"],
                 ["Dress", "/outfit/dress"],
                 ["Costume", "/outfit/costume"],
-                ["Tshirt", "/outfit/tshirt"],
+            //  ["Tshirt", "/outfit/tshirt"],
                 ["Trousers", "/outfit/trousers"],
                 ["Shoes", "/outfit/shoes"],
             ],
