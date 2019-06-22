@@ -180,14 +180,14 @@ $(viewer.contentWindow).on("load", function(){
             menuItemClicked.dispatch("/outfit/costume");
         }, msec);
     });
-
+/*
     $(Tshirt.element).on("click", function (){
         clearTimeout(interval);
         interval = setTimeout(function(){
             menuItemClicked.dispatch("/outfit/tshirt");
         }, msec);
     });
-
+*/
     $(Trousers.element).on("click", function (){
         clearTimeout(interval);
         interval = setTimeout(function(){
