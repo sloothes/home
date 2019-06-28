@@ -35,10 +35,10 @@ $(viewer.contentWindow).on("load", function(){
     const Hairs = nameCategoryMap["Hairs"];
     const Stockings = nameCategoryMap["Stockings"];
     const Underwears = nameCategoryMap["Underwears"];
-    const Dress = nameCategoryMap["Dress"];
     const Costume = nameCategoryMap["Costume"];
     const Tshirt = nameCategoryMap["Tshirt"];
     const Trousers = nameCategoryMap["Trousers"];
+    const Dress = nameCategoryMap["Dress"];
     const Shoes = nameCategoryMap["Shoes"];
 
     var actionClicked = new Signal();
@@ -167,31 +167,31 @@ $(viewer.contentWindow).on("load", function(){
         }, msec);
     });
 
-    $(Dress.element).on("click", function (){
-        clearTimeout(interval);
-        interval = setTimeout(function(){
-            menuItemClicked.dispatch("/outfit/dress");
-        }, msec);
-    });
-
     $(Costume.element).on("click", function (){
         clearTimeout(interval);
         interval = setTimeout(function(){
             menuItemClicked.dispatch("/outfit/costume");
         }, msec);
     });
-/*
+
     $(Tshirt.element).on("click", function (){
         clearTimeout(interval);
         interval = setTimeout(function(){
             menuItemClicked.dispatch("/outfit/tshirt");
         }, msec);
     });
-*/
+
     $(Trousers.element).on("click", function (){
         clearTimeout(interval);
         interval = setTimeout(function(){
             menuItemClicked.dispatch("/outfit/trousers");
+        }, msec);
+    });
+
+    $(Dress.element).on("click", function (){
+        clearTimeout(interval);
+        interval = setTimeout(function(){
+            menuItemClicked.dispatch("/outfit/dress");
         }, msec);
     });
 
