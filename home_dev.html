@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="description" contents="Real-time Multiplayer 3D Social Web Spaces Network">
+
+    <title>(home_dev.html)</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootbox-dialoges.css">
+    <link rel="stylesheet" href="/css/side-panels.css">
+    <link rel="stylesheet" href="/css/messg.css" >
+    <link rel="stylesheet" href="/css/spectrum.css">
+    <link rel="stylesheet" href="/css/colorpicker.css">
+    <link rel="stylesheet" href="/css/spinner.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <link rel="stylesheet" href="/css/alerts.css">
+    <link rel="stylesheet" href="/css/panel-ui.css">
+    <link rel="stylesheet" href="/css/anywhere3d.css">
+    <link rel="stylesheet" href="/css/jquery.Jcrop.css">
+    <link rel="stylesheet" href="/css/menu-menubar.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/style.css">
+
+    <script src="/socketcluster.js"></script>
+    <script src="/sc-codec-min-bin.js"></script>
+
+</head>
+
+<body>
+
+<style>
+
+    #content div ul li {
+        cursor: pointer;
+        margin-left:15px;
+    }
+
+    #right-side-content {
+        position:absolute; left:25px; top:60px; right:10px; bottom:40px; 
+        padding: 0px 20px 0px 20px; overflow:auto; 
+    }
+
+    a.none-deco:focus,
+    a.none-deco:hover, 
+    a.none-deco:active, 
+    a.none-deco:visited {
+        color:#55a5ec;
+        text-decoration:none;
+    }
+
+</style>
+
+<div id="panel" class="collapsed">
+    <h1><a href="/" class="none-deco">Sloothes</a></h1>
+    <a id="expandButton" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+    <div class="filterBlock" >
+        <input type="text" id="filterInput" placeholder="Type to filter"/>
+        <a href="#" id="clearFilterButton" >x</a>
+    </div>
+    <div id="content"></div>
+</div>
+
+<section class="mbr-section" id="body-section">
+
+    <iframe id="viewer" src="/scene/scene-v3.7.html"></iframe>
+
+    <div class="side-panel" id="right-side" style="top:0;">
+        <div id="right-side-pinbtn" title="click this to pin/unpin panel"></div>
+
+        <div id="right-side-content" style="overflow-x:hidden;">
+
+            <div class="side-holder" style="margin-bottom:20px;">
+                <ul class="nav nav-tabs nav-pills" style="overflow-x:auto;overflow-y:hidden;width:300px;">
+
+                    <li class role="presentation"><a href="#control-tab" data-toggle="pill" class="pills right-pill right-pill-control">Control</a></li>
+                    <li class role="presentation"><a href="#outfits-tab" data-toggle="pill" class="pills right-pill right-pill-outfits">Outfit</a></li>
+                    <li class role="presentation"><a href="#setup-tab" data-toggle="pill" class="pills right-pill right-pill-setup">Setup</a></li>
+                    <li class role="presentation"><a href="#login-tab" data-toggle="pill" class="pills right-pill right-pill-login">Login</a></li>
+
+                </ul>
+            </div>
+
+            <div id="right-side-panel" class="tab-content">
+
+                <div id="control-tab" class="component-pane tab-pane fade in active"></div>
+                <div id="outfits-tab" class="component-pane tab-pane fade"></div>
+                <div id="setup-tab" class="component-pane tab-pane fade"></div>
+                <div id="login-tab" class="component-pane tab-pane fade"></div>
+
+                <div id="new-product-tab" class="component-pane tab-pane fade"></div>
+                <div id="edit-product-tab" class="component-pane tab-pane fade"></div>
+                <div id="buy-product-tab" class="component-pane tab-pane fade"></div>
+                <div id="helpers-tab" class="component-pane tab-pane fade"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="middle" id="dialog-panel">
+        <div id="dialog-container" style="max-width:350px;max-height:600px;"></div>
+    </div>
+
+</section>
+
+<script>
+    var debugMode = true;
+</script>
+
+<script src="/home/menu-list.js"></script>
+<script src="/home/menu-panel.js"></script>
+<script src="/js/w3.js"></script>
+<script src="/js/rawinflate.js"></script>
+<script src="/js/rawdeflate.js"></script>
+<script src="/js/store2.js"></script>
+<script src="/js/Objectid.js"></script>
+<script src="/js/zangodb.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/jquery.Jcrop.js"></script>
+<script src="/js/bootbox.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/DeviceDetector.js"></script>
+<script src="/js/MathDecimalAdjustment.js"></script>
+<script src="/js/watermark.js"></script>
+<script src="/js/validator.js"></script>
+<script src="/js/system.min.js"></script>
+<script src="/js/signals.min.js"></script>
+<script src="/js/command.js"></script>
+<script src="/js/spectrum.js"></script>
+<script src="/js/validator.min.js"></script>
+<script src="/js/alerts.js"></script>
+<script src="/js/side-panels.js"></script>
+<script src="/home/index.js"></script>
+
+<script>
+    $("#login-tab").load("/login-tab/");
+    $("#control-tab").load("/control-tab/");
+    $("#outfits-tab").load("/outfit-tab/");
+</script>
+
+</body>
+</html>
