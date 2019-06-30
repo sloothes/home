@@ -87,6 +87,11 @@
                     <li class role="presentation"><a href="#setup-tab" data-toggle="pill" class="pills right-pill right-pill-setup">Setup</a></li>
                     <li class role="presentation"><a href="#login-tab" data-toggle="pill" class="pills right-pill right-pill-login">Login</a></li>
 
+                    <li class role="presentation"><a href="#new-product-tab" data-toggle="pill" class="pills right-pill right-pill-new">New</a></li>
+                    <li class role="presentation"><a href="#edit-product-tab" data-toggle="pill" class="pills right-pill right-pill-edit">Edit</a></li>
+                    <li class role="presentation"><a href="#view-product-tab" data-toggle="pill" class="pills right-pill right-pill-view">View</a></li>
+                    <li class role="presentation"><a href="#helpers-tab" data-toggle="pill" class="pills right-pill right-pill-helpers">Helpers</a></li>
+
                 </ul>
             </div>
 
@@ -99,7 +104,7 @@
 
                 <div id="new-product-tab" class="component-pane tab-pane fade"></div>
                 <div id="edit-product-tab" class="component-pane tab-pane fade"></div>
-                <div id="buy-product-tab" class="component-pane tab-pane fade"></div>
+                <div id="view-product-tab" class="component-pane tab-pane fade"></div>
                 <div id="helpers-tab" class="component-pane tab-pane fade"></div>
 
             </div>
@@ -145,10 +150,15 @@
 <script src="/home/index.js"></script>
 
 <script>
+
     $("#login-tab").load("/login-tab/");
     $("#control-tab").load("/control-tab/");
     $("#outfits-tab").load("//raw.githubusercontent.com/sloothes/outfit-tab/v2.2/outfits-tab-v2.2.html");
-    $("#setup-tab").load("//raw.githubusercontent.com/sloothes/select-item-tab/v1.2/select-outfit-item-tab.html");
+
+    $("#new-product-tab").load("//raw.githubusercontent.com/sloothes/new-item-tab/v1.2/new-outfit-item-tab.html");
+    $("#edit-product-tab").load("//raw.githubusercontent.com/sloothes/edit-item-tab/v1.2/edit-outfit-item-tab.html");
+    $("#view-product-tab").load("//raw.githubusercontent.com/sloothes/view-item-tab/v1.0/buy-outfit-item-tab.html");
+
 </script>
 
 </body>
