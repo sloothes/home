@@ -7,6 +7,7 @@ var SceneDocument = viewer.contentDocument;
 $(viewer.contentWindow).on("load", function(){
     db = this.db;
     MW = this.MW;
+    AW3D = this.AW3D;
     THREE = this.THREE;
     scene = this.scene;
     camera = this.camera;
