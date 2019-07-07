@@ -29,6 +29,7 @@
 
     <script src="/socketcluster.js"></script>
     <script src="/sc-codec-min-bin.js"></script>
+    <script src="/js/loadjs.min.js"></script>
 
 </head>
 
@@ -84,7 +85,7 @@
 
                     <li class role="presentation"><a href="#control-tab" data-toggle="pill" class="pills right-pill right-pill-control">Control</a></li>
                     <li class role="presentation"><a href="#outfits-tab" data-toggle="pill" class="pills right-pill right-pill-outfits">Outfit</a></li>
-                    <li class role="presentation"><a href="#setup-tab" data-toggle="pill" class="pills right-pill right-pill-setup">Setup</a></li>
+                    <li class role="presentation"><a href="#material-tab" data-toggle="pill" class="pills right-pill right-pill-setup">Material</a></li>
                     <li class role="presentation"><a href="#login-tab" data-toggle="pill" class="pills right-pill right-pill-login">Login</a></li>
 
                 </ul>
@@ -94,7 +95,7 @@
 
                 <div id="control-tab" class="component-pane tab-pane fade in active"></div>
                 <div id="outfits-tab" class="component-pane tab-pane fade"></div>
-                <div id="setup-tab" class="component-pane tab-pane fade"></div>
+                <div id="material-tab" class="component-pane tab-pane fade"></div>
                 <div id="login-tab" class="component-pane tab-pane fade"></div>
 
                 <div id="new-product-tab" class="component-pane tab-pane fade"></div>
@@ -145,9 +146,12 @@
 <script src="/home/index.js"></script>
 
 <script>
-    $("#login-tab").load("/login-tab/");
+
     $("#control-tab").load("/control-tab/");
     $("#outfits-tab").load("/outfit-tab/");
+    $("#material-tab").load("/material-tab/");
+    $("#login-tab").load("/login-tab/");
+
 </script>
 
 </body>
