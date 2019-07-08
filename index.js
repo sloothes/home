@@ -1,4 +1,4 @@
-//  Port to scene window.
+//  home/index.js
 
 var viewer = document.getElementById( "viewer" );
 var SceneWindow = viewer.contentWindow;
@@ -7,9 +7,8 @@ var SceneDocument = viewer.contentDocument;
 $(viewer.contentWindow).on("load", function(){
     db = this.db;
     MW = this.MW;
-//  AW3D = this.AW3D;
-//  THREE = this.THREE;
     scene = this.scene;
+    UserDB = this.UserDB;
     camera = this.camera;
     renderer = this.renderer;
     localPlayer = this.localPlayer;
