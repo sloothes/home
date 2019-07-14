@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <meta name="description" contents="Real-time Multiplayer 3D Social Web Spaces Network">
 
-    <title>(home v3.1)</title>
+    <title>(home v3.2)</title>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootbox-dialoges.css">
@@ -85,7 +85,8 @@
 
                     <li class role="presentation"><a href="#control-tab" data-toggle="pill" class="pills right-pill right-pill-control">Control</a></li>
                     <li class role="presentation"><a href="#outfits-tab" data-toggle="pill" class="pills right-pill right-pill-outfits">Outfit</a></li>
-                    <li class role="presentation"><a href="#material-tab" data-toggle="pill" class="pills right-pill right-pill-setup">Material</a></li>
+                    <li class role="presentation"><a href="#create-material-tab" data-toggle="pill" class="pills right-pill right-pill-create">Create</a></li>
+                    <li class role="presentation"><a href="#select-material-tab" data-toggle="pill" class="pills right-pill right-pill-select">Select</a></li>
                     <li class role="presentation"><a href="#login-tab" data-toggle="pill" class="pills right-pill right-pill-login">Login</a></li>
 
                 </ul>
@@ -95,7 +96,8 @@
 
                 <div id="control-tab" class="component-pane tab-pane fade in active"></div>
                 <div id="outfits-tab" class="component-pane tab-pane fade"></div>
-                <div id="material-tab" class="component-pane tab-pane fade"></div>
+                <div id="create-material-tab" class="component-pane tab-pane fade"></div>
+                <div id="select-material-tab" class="component-pane tab-pane fade"></div>
                 <div id="login-tab" class="component-pane tab-pane fade"></div>
 
                 <div id="new-product-tab" class="component-pane tab-pane fade"></div>
@@ -149,7 +151,8 @@
 
     $("#control-tab").load("/control-tab/");
     $("#outfits-tab").load("/outfit-tab/");
-    $("#material-tab").load("/material-tab/select.html");
+    $("#create-material-tab").load("/material-tab/create.html");
+    $("#select-material-tab").load("/material-tab/select.html");
     $("#login-tab").load("/login-tab/");
 
 </script>
