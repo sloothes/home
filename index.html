@@ -88,7 +88,7 @@
                     <li class role="presentation"><a href="#create-material-tab" data-toggle="pill" class="pills right-pill right-pill-create">New</a></li>
                 <!-- li class role="presentation"><a href="#edit-material-tab" data-toggle="pill" class="pills right-pill right-pill-create">Edit</a></li -->
                 <!-- li class role="presentation"><a href="#select-material-tab" data-toggle="pill" class="pills right-pill right-pill-select">Select</a></li -->
-                    <li class role="presentation"><a href="#login-tab" data-toggle="pill" class="pills right-pill right-pill-login">Login</a></li>
+                <!-- li class role="presentation"><a href="#login-tab" data-toggle="pill" class="pills right-pill right-pill-login">Login</a></li -->
 
                 </ul>
             </div>
@@ -147,24 +147,20 @@
 <script src="/js/validator.min.js"></script>
 <script src="/js/alerts.js"></script>
 <script src="/js/side-panels.js"></script>
+<script src="/three/three.js"></script>
+<script src="/three/UVsDebug.js"></script>
+<script src="/material/materialtoJson.js"></script>
 <script src="/home/index.js"></script>
 
 <script>
 
-loadjs([
-    "/three/three.js", 
-    "/three/UVsDebug.js", 
-    "/material/materialtoJson.js",
-], {
-    async: false,
-    success: function(){
-        $("#control-tab").load("/control-tab/");
-        $("#outfits-tab").load("/outfit-tab/");
-        $("#create-material-tab").load("/material-tab/create.html");
-    //  $("#edit-material-tab").load("/material-tab/edit.html");
-    //  $("#select-material-tab").load("/material-tab/select.html");
-        $("#login-tab").load("/login-tab/");
-    },
+    $("#control-tab").load("/control-tab/");
+    $("#outfits-tab").load("/outfit-tab/");
+    $("#create-material-tab").load("/material-tab/create.html");
+//  $("#edit-material-tab").load("/material-tab/edit.html");
+//  $("#select-material-tab").load("/material-tab/select.html");
+//  $("#login-tab").load("/login-tab/");
+
 });
 
 </script>
