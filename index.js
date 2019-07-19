@@ -5,10 +5,11 @@ var SceneWindow = viewer.contentWindow;
 var SceneDocument = viewer.contentDocument;
 
 $(viewer.contentWindow).on("load", function(){
-    db = this.db;
+//  db = this.db;
+//  UserDB = this.UserDB;
+
     MW = this.MW;
     scene = this.scene;
-    UserDB = this.UserDB;
     camera = this.camera;
     renderer = this.renderer;
     localPlayer = this.localPlayer;
