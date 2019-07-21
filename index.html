@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <meta name="description" contents="Real-time Multiplayer 3D Social Web Spaces Network">
 
-    <title>(home v3.3)</title>
+    <title>(home v3.2)</title>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootbox-dialoges.css">
@@ -124,44 +124,45 @@
 
 <script>
     var debugMode = true;
-    loadjs(["/home/menu-list.js",
-            "/home/menu-panel.js",
-            "/js/rawinflate.js",
-            "/js/rawdeflate.js",
-            "/js/store2.js",
-            "/js/Objectid.js",
-            "/js/zangodb.min.js",
-            "/js/jquery.min.js",
-            "/js/jquery-ui.js",
-            "/js/jquery.Jcrop.js",
-            "/js/bootbox.min.js",
-            "/js/bootstrap.min.js",
-            "/js/DeviceDetector.js",
-            "/js/MathDecimalAdjustment.js",
-            "/js/watermark.js",
-            "/js/validator.js",
-            "/js/system.min.js",
-            "/js/signals.min.js",
-            "/js/command.js",
-            "/js/spectrum.js",
-            "/js/validator.min.js",
-            "/js/alerts.js",
-            "/js/side-panels.js",
-            "/home/index.js",
-        ], {
-        async: false,
-        success: function(){
-            $("#control-tab").load("/control-tab/");
-            $("#outfits-tab").load("/outfit-tab/");
-            $("#new-product-tab").load("/product-tab/new.html");
-        },
-    });
+</script>
 
+<script src="/home/menu-list.js"></script>
+<script src="/home/menu-panel.js"></script>
+<!-- script src="/js/w3.js"></script -->
+<script src="/js/rawinflate.js"></script>
+<script src="/js/rawdeflate.js"></script>
+<script src="/js/store2.js"></script>
+<script src="/js/Objectid.js"></script>
+<script src="/js/zangodb.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/jquery.Jcrop.js"></script>
+<script src="/js/bootbox.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/DeviceDetector.js"></script>
+<script src="/js/MathDecimalAdjustment.js"></script>
+<script src="/js/watermark.js"></script>
+<script src="/js/validator.js"></script>
+<script src="/js/system.min.js"></script>
+<script src="/js/signals.min.js"></script>
+<script src="/js/command.js"></script>
+<script src="/js/spectrum.js"></script>
+<script src="/js/validator.min.js"></script>
+<script src="/js/alerts.js"></script>
+<script src="/js/side-panels.js"></script>
+<!-- script src="/three/three.js"></script -->
+<!-- script src="/three/UVsDebug.js"></script -->
+<!-- script src="/material/materialtoJson.js"></script -->
+<script src="/home/index.js"></script>
+
+<script>
+    $("#control-tab").load("/control-tab/");
+    $("#outfits-tab").load("/outfit-tab/");
+    $("#texture-tab").load("/texture-tab/cached-textures-tab.html");
+    $("#create-material-tab").load("/material-tab/create.html");
 //  $("#edit-material-tab").load("/material-tab/edit.html");
 //  $("#select-material-tab").load("/material-tab/select.html");
-//  $("#texture-tab").load("/texture-tab/cached-textures-tab.html");
 //  $("#login-tab").load("/login-tab/");
-
 </script>
 
 </body>
