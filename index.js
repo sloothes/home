@@ -7,8 +7,8 @@ var SceneDocument = viewer.contentDocument;
 $(viewer.contentWindow).on("load", function(){
 //  db = this.db;
 //  UserDB = this.UserDB;
-
     MW = this.MW;
+    THREE = this.THREE;
     scene = this.scene;
     camera = this.camera;
     renderer = this.renderer;
