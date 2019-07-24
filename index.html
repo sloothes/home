@@ -154,6 +154,8 @@
 
 <script>
 
+//  USER.db.js
+
     const VERSION = 4;
     const DB_NAME = "USER";
 
@@ -172,6 +174,50 @@
     }).catch(function(err){
         console.error(err);
     });
+
+    function exportUSERCollection( name ){
+
+        db.open(function(err, database){
+            if (err) console.error(err);
+        }).then( function(db){
+
+            debugMode && console.log( 
+            `${db.name} (v${db.version}) ready for export.`);
+
+        //  throws error if collection not exist!
+            db.collection( name );  // important!
+
+            db.collection(name).find()
+            .toArray(function(err, docs){
+                if (err) throw err;
+                if ( !docs.length )  
+                    throw `collection ${name} is empty`;
+            }).then(function(docs){ 
+                return JSON.stringify(docs);
+            }).then(function(data){ 
+                debugMode && console.log( data );
+
+            //  Save to desktop.
+                var a = document.createElement("a");
+                var file = new Blob([data], {type: "text/json"});
+                a.href = URL.createObjectURL(file);
+                a.download = name + "-" + db.name + "v" + db.version + ".json";
+                a.click();
+
+                return a.href;
+
+            }).then(function(objectURL){
+                URL.revokeObjectURL(objectURL);
+
+            }).catch(function(err){
+                console.error(err);
+            });
+
+        }).catch(function(err){
+            console.error(err);
+        });
+
+    }
 
 </script>
 
