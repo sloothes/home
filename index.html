@@ -153,7 +153,10 @@
 
 <script>
 
-    var db = new zango.Db( "USER", 4, {
+    const VERSION = 4;
+    const DB_NAME = "USER";
+
+    db = new zango.Db( DB_NAME, VERSION, {
         animations: true,
         outfits:    true,
         materials:  true,
@@ -164,7 +167,7 @@
     db.open(function(err, database){
         if (err) console.error(err);
     }).then( function(){
-        debugMode && console.log(`Database ${db.name} (v${db.version}) opened.`);
+        console.log(`${db.name} (v${db.version}) opened.`);
     }).catch(function(err){
         console.error(err);
     });
