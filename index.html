@@ -153,6 +153,26 @@
 
 <script>
 
+    var db = new zango.Db( "USER", 4, {
+        animations: true,
+        outfits:    true,
+        materials:  true,
+        textures:   true,
+        products:   true,
+    });
+
+    db.open(function(err, database){
+        if (err) console.error(err);
+    }).then( function(){
+        debugMode && console.log(`Database ${db.name} (v${db.version}) opened.`);
+    }).catch(function(err){
+        console.error(err);
+    });
+
+</script>
+
+<script>
+
     $("#control-tab").load("/control-tab/");
 //  $("#outfits-tab").load("/outfit-tab/");
 //  $("#new-product-tab").load("/product-tab/new.html");
