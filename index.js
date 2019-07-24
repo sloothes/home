@@ -17,8 +17,8 @@ $(viewer.contentWindow).on("load", function(){
 
 (function(){
 
-    var interval, msec = 250;
-    const Signal = signals.Signal;
+    var interval;
+    var msec = 250;
 
     const Run   = nameCategoryMap["Run"];
     const Idle  = nameCategoryMap["Idle"];
@@ -40,6 +40,7 @@ $(viewer.contentWindow).on("load", function(){
     const Dress = nameCategoryMap["Dress"];
     const Shoes = nameCategoryMap["Shoes"];
 
+    var Signal = signals.Signal;
     var actionClicked = new Signal();
     var menuItemClicked = new Signal();
 
