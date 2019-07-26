@@ -162,6 +162,8 @@
     const DB_NAME = "USER";
 
     db = new zango.Db( DB_NAME, VERSION, {
+        current:    true, // --> v5
+        settings:   true, // --> v5
         animations: true,
         outfits:    true,
         materials:  true,
