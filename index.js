@@ -4,7 +4,18 @@ var viewer = document.getElementById( "viewer" );
 var SceneWindow = viewer.contentWindow;
 var SceneDocument = viewer.contentDocument;
 
+const loadingDialogMeter = bootbox.dialog({
+    message: `<div class="text-center meter">`
+    + `<span style="width:100%;">Loading...`
+    + `</span></div>`,
+    buttons: false,
+    closeButton: false,
+    className: "middle",
+});
+
+
 $(viewer.contentWindow).on("load", function(){
+
     MW = this.MW;
     THREE = this.THREE;
     scene = this.scene;
@@ -13,6 +24,8 @@ $(viewer.contentWindow).on("load", function(){
     localPlayer = this.localPlayer;
     cameraControls = this.cameraControls;
     keyInputControls = this.keyInputControls;
+
+    loadingDialogMeter.modal("hide"); // important!
 });
 
 (function(){
