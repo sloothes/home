@@ -4,16 +4,6 @@ var viewer = document.getElementById( "viewer" );
 var SceneWindow = viewer.contentWindow;
 var SceneDocument = viewer.contentDocument;
 
-const loadingDialogMeter = bootbox.dialog({
-    message: `<div class="text-center meter">`
-    + `<span style="width:100%;">Loading...`
-    + `</span></div>`,
-    buttons: false,
-    closeButton: false,
-    className: "middle",
-});
-
-
 $(viewer.contentWindow).on("load", function(){
 
     MW = this.MW;
