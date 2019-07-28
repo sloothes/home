@@ -15,7 +15,6 @@ $(viewer.contentWindow).on("load", function(){
     cameraControls = this.cameraControls;
     keyInputControls = this.keyInputControls;
 
-    loadingDialogMeter.modal("hide"); // important!
 });
 
 (function(){
