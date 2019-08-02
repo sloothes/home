@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <meta name="description" contents="Real-time Multiplayer 3D Social Web Spaces Network">
 
-    <title>(home v3.4)</title>
+    <title>(home v3.5)</title>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootbox-dialoges.css">
@@ -163,7 +163,7 @@
 
 //  USER.db.js
 
-    const VERSION = 4;
+    const VERSION = 5;
     const DB_NAME = "USER";
 
     db = new zango.Db( DB_NAME, VERSION, {
@@ -173,7 +173,6 @@
         outfits:    true,
         materials:  true,
         textures:   true,
-        products:   true,
     });
 
     db.open(function(err, database){
