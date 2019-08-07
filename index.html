@@ -85,7 +85,7 @@
         <div id="right-side-content" style="overflow-x:hidden;">
 
             <div class="side-holder" style="margin-bottom:20px;">
-                <ul class="nav nav-tabs nav-pills" style="overflow-x:auto;overflow-y:hidden;width:300px;">
+                <ul id="rightside-navpills-bar" class="nav nav-tabs nav-pills" style="overflow-x:auto;overflow-y:hidden;width:300px;">
 
                     <li class role="presentation"><a href="#control-tab"  data-toggle="pill" class="pills right-pill right-pill-control">Control</a></li>
                     <li class role="presentation"><a href="#outfit-tab"   data-toggle="pill" class="pills right-pill right-pill-outfit">Outfit</a></li>
@@ -102,15 +102,28 @@
                 </ul>
             </div>
 
+            <script>
 
+                (function (){
 
+                    if ( !window.Hammer ) return;
+                    if ( window.isMobile ) return;
 
+                    const element = $("rightside-navpills-bar").get(0);
+                //  Smoother scroll.
+                    element.style["scroll-behavior"] = "smooth";
+                //  Create a manager to manager the element.
+                    var manager = new Hammer(element);
+                //  Subscribe to a desired event.
+                    manager.on("swipe", function(e) {
+                        if ( e.offsetDirection === 4 || e.offsetDirection === 2 ) {
+                            element.scrollLeft -= e.deltaX;
+                        }
+                    });
 
+                })();
 
-
-
-
-
+            </script>
 
             <div id="right-side-panel" class="tab-content">
 
