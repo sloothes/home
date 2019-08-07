@@ -111,15 +111,16 @@
                     if ( !window.Hammer ) return;
                     if ( window.isMobile ) return;
 
-                    const element = $("#rightside-navpill-bar").get(0);
+                    const parent = $("#rightside-navpill-bar").get(0);
+                    const element = $("#nav-pill-tabs").get(0);
                 //  Smoother scroll.
-                    element.style["scroll-behavior"] = "smooth";
+                    parent.style["scroll-behavior"] = "smooth";
                 //  Create a manager to manager the element.
                     var manager = new Hammer(element);
                 //  Subscribe to a desired event.
                     manager.on("swipe", function(e) {
                         if ( e.offsetDirection === 4 || e.offsetDirection === 2 ) {
-                            element.scrollLeft -= e.deltaX;
+                            parent.scrollLeft -= e.deltaX;
                         }
                     });
 
