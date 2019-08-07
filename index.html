@@ -87,7 +87,7 @@
         <div id="right-side-content" style="overflow-x:hidden;">
 
             <div id="rightside-navpill-bar"class="side-holder" style="margin-bottom:20px;auto;overflow-y:hidden;width:300px;">
-                <ul id="nav-pill-tabs" class="nav nav-tabs nav-pills">
+                <div id="nav-pill-tabs" class="nav nav-tabs nav-pills">
 
                     <li class role="presentation"><a href="#control-tab"  data-toggle="pill" class="pills right-pill right-pill-control">Control</a></li>
                     <li class role="presentation"><a href="#outfit-tab"   data-toggle="pill" class="pills right-pill right-pill-outfit">Outfit</a></li>
@@ -96,12 +96,12 @@
                     <li class role="presentation"><a href="#product-tab"  data-toggle="pill" class="pills right-pill right-pill-product">Product</a></li>
                     <li class role="presentation"><a href="#download-uv"  data-toggle="pill" class="pills right-pill right-pill-uvs">UVs</a></li>
 
-                <!-- li class role="presentation"><a href="#texture-tab" data-toggle="pill" class="pills right-pill right-pill-texture">Texture</a></li -->
-                <!-- li class role="presentation"><a href="#material-edit-tab" data-toggle="pill" class="pills right-pill right-pill-create">Edit</a></li -->
-                <!-- li class role="presentation"><a href="#material-select-tab" data-toggle="pill" class="pills right-pill right-pill-select">Select</a></li -->
-                <!-- li class role="presentation"><a href="#login-tab" data-toggle="pill" class="pills right-pill right-pill-login">Login</a></li -->
+                    <!-- li class role="presentation"><a href="#texture-tab" data-toggle="pill" class="pills right-pill right-pill-texture">Texture</a></li -->
+                    <!-- li class role="presentation"><a href="#material-edit-tab" data-toggle="pill" class="pills right-pill right-pill-create">Edit</a></li -->
+                    <!-- li class role="presentation"><a href="#material-select-tab" data-toggle="pill" class="pills right-pill right-pill-select">Select</a></li -->
+                    <!-- li class role="presentation"><a href="#login-tab" data-toggle="pill" class="pills right-pill right-pill-login">Login</a></li -->
 
-                </ul>
+                </div>
             </div>
 
             <script>
@@ -111,8 +111,8 @@
                     if ( !window.Hammer ) return;
                     if ( window.isMobile ) return;
 
-                    const parent = $("#rightside-navpill-bar").get(0);
                     const element = $("#nav-pill-tabs").get(0);
+                    const parent = $("#rightside-navpill-bar").get(0);
                 //  Smoother scroll.
                     parent.style["scroll-behavior"] = "smooth";
                 //  Create a manager to manager the element.
