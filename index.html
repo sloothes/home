@@ -32,6 +32,8 @@
     <script src="/sc-codec-min-bin.js"></script>
 
     <script src="/js/hammer.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
     <script src="/js/loadjs.min.js"></script>
     <script src="/js/DeviceDetector.js"></script>
 
@@ -109,7 +111,7 @@
                     if ( !window.Hammer ) return;
                     if ( window.isMobile ) return;
 
-                    const element = $("rightside-navpills-bar").get(0);
+                    const element = $("ul#rightside-navpills-bar").get(0);
                 //  Smoother scroll.
                     element.style["scroll-behavior"] = "smooth";
                 //  Create a manager to manager the element.
@@ -167,8 +169,6 @@
 <script src="/js/store2.js"></script>
 <script src="/js/Objectid.js"></script>
 <script src="/js/zangodb.min.js"></script>
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery-ui.js"></script>
 <script src="/js/jquery.Jcrop.js"></script>
 <script src="/js/bootbox.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
