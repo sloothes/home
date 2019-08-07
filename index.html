@@ -30,7 +30,10 @@
 
     <script src="/socketcluster.js"></script>
     <script src="/sc-codec-min-bin.js"></script>
+
+    <script src="/js/hammer.js"></script>
     <script src="/js/loadjs.min.js"></script>
+    <script src="/js/DeviceDetector.js"></script>
 
 </head>
 
@@ -84,12 +87,12 @@
             <div class="side-holder" style="margin-bottom:20px;">
                 <ul class="nav nav-tabs nav-pills" style="overflow-x:auto;overflow-y:hidden;width:300px;">
 
-                    <li class role="presentation"><a href="#control-tab" data-toggle="pill" class="pills right-pill right-pill-control">Control</a></li>
-                    <li class role="presentation"><a href="#outfits-tab" data-toggle="pill" class="pills right-pill right-pill-outfits">Outfit</a></li>
-                    <li class role="presentation"><a href="#texture-tab" data-toggle="pill" class="pills right-pill right-pill-outfits">Texture</a></li>
-                    <li class role="presentation"><a href="#product-tab" data-toggle="pill" class="pills right-pill right-pill-product">Product</a></li>
-                <!-- li class role="presentation"><a href="#material-tab" data-toggle="pill" class="pills right-pill right-pill-outfits">Material</a></li -->
-                    <li class role="presentation"><a href="#download-uv" data-toggle="pill" class="pills right-pill right-pill-product">UVs</a></li>
+                    <li class role="presentation"><a href="#control-tab"  data-toggle="pill" class="pills right-pill right-pill-control">Control</a></li>
+                    <li class role="presentation"><a href="#outfit-tab"   data-toggle="pill" class="pills right-pill right-pill-outfit">Outfit</a></li>
+                    <li class role="presentation"><a href="#material-tab" data-toggle="pill" class="pills right-pill right-pill-material">Material</a></li>
+                    <li class role="presentation"><a href="#texture-tab"  data-toggle="pill" class="pills right-pill right-pill-texture">Texture</a></li>
+                    <li class role="presentation"><a href="#product-tab"  data-toggle="pill" class="pills right-pill right-pill-product">Product</a></li>
+                    <li class role="presentation"><a href="#download-uv"  data-toggle="pill" class="pills right-pill right-pill-uvs">UVs</a></li>
 
                 <!-- li class role="presentation"><a href="#texture-tab" data-toggle="pill" class="pills right-pill right-pill-texture">Texture</a></li -->
                 <!-- li class role="presentation"><a href="#material-edit-tab" data-toggle="pill" class="pills right-pill right-pill-create">Edit</a></li -->
@@ -99,14 +102,24 @@
                 </ul>
             </div>
 
+
+
+
+
+
+
+
+
+
+
             <div id="right-side-panel" class="tab-content">
 
-                <div id="control-tab" class="component-pane tab-pane fade in active"></div>
-                <div id="outfits-tab" class="component-pane tab-pane fade"></div>
+                <div id="control-tab"  class="component-pane tab-pane fade in active"></div>
+                <div id="outfit-tab"   class="component-pane tab-pane fade"></div>
                 <div id="material-tab" class="component-pane tab-pane fade"></div>
-                <div id="texture-tab" class="component-pane tab-pane fade"></div>
-                <div id="product-tab" class="component-pane tab-pane fade"></div>
-                <div id="download-uv" class="component-pane tab-pane fade"></div>
+                <div id="texture-tab"  class="component-pane tab-pane fade"></div>
+                <div id="product-tab"  class="component-pane tab-pane fade"></div>
+                <div id="download-uvs" class="component-pane tab-pane fade"></div>
 
                 <div id="material-edit-tab" class="component-pane tab-pane fade"></div>
                 <div id="material-select-tab" class="component-pane tab-pane fade"></div>
@@ -146,7 +159,6 @@
 <script src="/js/jquery.Jcrop.js"></script>
 <script src="/js/bootbox.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/DeviceDetector.js"></script>
 <script src="/js/MathDecimalAdjustment.js"></script>
 <script src="/js/watermark.js"></script>
 <script src="/js/validator.js"></script>
@@ -233,12 +245,12 @@
 <script>
 
     $("#control-tab").load("/control-tab/");
-    $("#outfits-tab").load("/outfit-tab/");
+    $("#outfit-tab").load("/outfit-tab/");
+    $("#material-tab").load("/material-tab/insert.html");
     $("#texture-tab").load("/texture-tab/insert.html");
     $("#product-tab").load("/product-tab/insert.html");
 
 //  $("#material-tab").load("/material-tab/create.html");
-//  $("#material-tab").load("/material-tab/insert.html");
 //  $("#product-tab").load("/product-tab/insert.html");
 //  $("#download-uv").load("/uvs-tab/");
 
