@@ -86,10 +86,9 @@
 
         <div id="right-side-content" style="overflow-x:hidden;">
 
-            <div id="rightside-navpill-bar" class="side-holder" style="margin-bottom:20px;overflow-y:hidden;max-width:300px;">
-                <div id="nav-pill-tabs" style="width:fit-contents;">
+            <div id="rightside-navpill-bar" class="side-holder" style="margin-bottom:20px;">
 
-                    <ul class="nav nav-tabs nav-pills">
+                    <ul id="nav-pill-tabs" class="nav nav-tabs nav-pills" style="overflow-y:hidden;max-width:300px;">
 
                         <li class role="presentation"><a href="#control-tab"  data-toggle="pill" class="pills right-pill right-pill-control">Control</a></li>
                         <li class role="presentation"><a href="#outfit-tab"   data-toggle="pill" class="pills right-pill right-pill-outfit">Outfit</a></li>
@@ -105,7 +104,6 @@
 
                     </ul>
 
-                </div>
             </div>
 
             <script>
@@ -116,17 +114,21 @@
                     if ( window.isMobile ) return;
 
                     const element = $("#nav-pill-tabs").get(0);
-                    const parent = $("#rightside-navpill-bar").get(0);
-
                 //  Smoother scroll.
-                    parent.style["scroll-behavior"] = "smooth";
-                //  Create a manager to manager the element.
-                    var manager = new Hammer(element);
-                //  Subscribe to a desired event.
-                    manager.on("swipe", function(e) {
-                        if ( e.offsetDirection === 4 || e.offsetDirection === 2 ) {
-                            parent.scrollLeft -= e.deltaX;
-                        }
+                    element.style["scroll-behavior"] = "smooth";
+
+                    $("#nav-pill-tabs").find("a.pills.right-pill")
+                    .toArray().forEach(function(pill){
+
+                    //  Create a manager to manager the element.
+                        var manager = new Hammer(pill);
+                    //  Subscribe to a desired event.
+                        manager.on("swipe", function(e) {
+                            if ( e.offsetDirection === 4 || e.offsetDirection === 2 ) {
+                                element.scrollLeft -= e.deltaX;
+                            }
+                        });
+
                     });
 
                 })();
@@ -140,7 +142,7 @@
                 <div id="material-tab" class="component-pane tab-pane fade"></div>
                 <div id="texture-tab"  class="component-pane tab-pane fade"></div>
                 <div id="product-tab"  class="component-pane tab-pane fade"></div>
-                <div id="download-uvs" class="component-pane tab-pane fade"></div>
+                <div id="download-uv"  class="component-pane tab-pane fade"></div>
 
                 <div id="material-edit-tab" class="component-pane tab-pane fade"></div>
                 <div id="material-select-tab" class="component-pane tab-pane fade"></div>
