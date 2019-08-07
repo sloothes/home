@@ -86,8 +86,8 @@
 
         <div id="right-side-content" style="overflow-x:hidden;">
 
-            <div class="side-holder" style="margin-bottom:20px;">
-                <ul id="rightside-navpills-bar" class="nav nav-tabs nav-pills" style="overflow-x:auto;overflow-y:hidden;width:300px;">
+            <div id="rightside-navpill-bar"class="side-holder" style="margin-bottom:20px;auto;overflow-y:hidden;width:300px;">
+                <ul id="nav-pill-tabs" class="nav nav-tabs nav-pills">
 
                     <li class role="presentation"><a href="#control-tab"  data-toggle="pill" class="pills right-pill right-pill-control">Control</a></li>
                     <li class role="presentation"><a href="#outfit-tab"   data-toggle="pill" class="pills right-pill right-pill-outfit">Outfit</a></li>
@@ -111,7 +111,7 @@
                     if ( !window.Hammer ) return;
                     if ( window.isMobile ) return;
 
-                    const element = $("ul#rightside-navpills-bar").get(0);
+                    const element = $("#rightside-navpill-bar").get(0);
                 //  Smoother scroll.
                     element.style["scroll-behavior"] = "smooth";
                 //  Create a manager to manager the element.
