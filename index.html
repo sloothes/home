@@ -86,8 +86,8 @@
 
         <div id="right-side-content" style="overflow-x:hidden;">
 
-            <div id="rightside-navpill-bar"class="side-holder" style="margin-bottom:20px;auto;overflow-y:hidden;width:300px;">
-                <div id="nav-pill-tabs">
+            <div id="rightside-navpill-bar" class="side-holder" style="margin-bottom:20px;auto;overflow-y:hidden;max-width:300px;">
+                <div id="nav-pill-tabs" style="width:fit-contents;">
 
                     <ul class="nav nav-tabs nav-pills">
 
@@ -117,6 +117,7 @@
 
                     const element = $("#nav-pill-tabs").get(0);
                     const parent = $("#rightside-navpill-bar").get(0);
+
                 //  Smoother scroll.
                     parent.style["scroll-behavior"] = "smooth";
                 //  Create a manager to manager the element.
