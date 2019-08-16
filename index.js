@@ -106,10 +106,10 @@ $(viewer.contentWindow).on("load", function(){
 
     });
 
-    $(Run.element).on("click", dispatchRunAction);
-    $(Walk.element).on("click", dispatchWalkAction);
-    $(Idle.element).on("click", dispatchIdleAction);
-    $(Jump.element).on("click", dispatchJumpAction);
+//    $(Run.element).on("click", dispatchRunAction);
+//    $(Walk.element).on("click", dispatchWalkAction);
+//    $(Idle.element).on("click", dispatchIdleAction);
+//    $(Jump.element).on("click", dispatchJumpAction);
 
     menuItemClicked.add(function(data){
         if ( window.socket ) 
