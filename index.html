@@ -81,7 +81,7 @@
 
     <iframe id="viewer" src="/scene/"></iframe>
 
-    <div class="side-panel" id="right-side" style="top:0;">
+    <div  id="right-side" class="side-panel"style="top:0;">
         <div id="right-side-pinbtn" title="click this to pin/unpin panel"></div>
 
         <div id="right-side-content" style="overflow-x:hidden;">
@@ -280,6 +280,11 @@
 //  $("#material-edit-tab").load("/material-tab/edit.html");
 //  $("#material-select-tab").load("/material-tab/select.html");
 //  $("#login-tab").load("/login-tab/");
+
+(function(){
+    if ( window.isMobile ) return;
+    $("#right-side").addClass("pinned");
+})();
 
 </script>
 
