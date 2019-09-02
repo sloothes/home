@@ -1,4 +1,4 @@
-//  home/index.js
+//  home/index.js (avatar editor)
 
 var viewer = document.getElementById( "viewer" );
 var SceneWindow = viewer.contentWindow;
